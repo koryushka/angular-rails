@@ -1,0 +1,14 @@
+<div class="container">
+
+  <div class="list-group">
+    <a class="list-group-item list-group-item-action active">
+      <h1 class='headline'>Proposals list</h1>
+    </a>
+    <span *ngFor='let proposal of proposals' class='list-group-item list-group-item-action'>
+      <a (click)='goTo(proposal)' class="proposal-list">
+        <h5 class="list-group-item-heading">{{proposal.customer}}</h5>
+        <p class="list-group-item-text">{{proposal.hourly_rate * proposal.estimated_hours | currency:'USD':true:'.0'}}</p>
+      </a>
+    </span>
+  </div>
+</div>
