@@ -24,7 +24,7 @@ export class ProposalListComponent implements OnInit {
   ){}
 
   ngOnInit(){
-    let timer = Observable.timer(0, 5000);
+    let timer = Observable.timer(0, 150000);
     timer.subscribe(() => this.getProposals());
   }
 
@@ -39,5 +39,10 @@ export class ProposalListComponent implements OnInit {
   goTo(proposal: Proposal): void{
     let link = ['/proposal', proposal.id]
     this.router.navigate(link)
+  }
+
+  removeProposal(proposal: Proposal){
+    this.proposalService.removeProposal(proposal.id)
+
   }
 }

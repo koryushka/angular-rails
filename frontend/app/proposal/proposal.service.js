@@ -25,9 +25,20 @@ var ProposalService = (function () {
     };
     ProposalService.prototype.createProposal = function (proposal) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        var oprions = new http_1.RequestOptions({ headers: headers });
+        var options = new http_1.RequestOptions({ headers: headers });
         return this.http.post(this.proposalsUrl, JSON.stringify(proposal), { headers: headers })
             .map(function (resp) { return resp.json(); });
+    };
+    // removeProposal(id: number){
+    //   // let headers = new Headers({'Content-Type': 'application/json'})
+    //   return this.http.delete(this.proposalsUrl + '/' + id);
+    //
+    // }
+    // Delete a comment
+    ProposalService.prototype.removeProposal = function (id) {
+        return this.http.delete(this.proposalsUrl + "/" + id); // ...using put request
+        //  .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
+        //  .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
     };
     ProposalService.prototype.handleError = function (error) {
         // In a real world app, we might use a remote logging infrastructure

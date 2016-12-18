@@ -21,7 +21,7 @@ var ProposalListComponent = (function () {
     }
     ProposalListComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var timer = Rx_1.Observable.timer(0, 5000);
+        var timer = Rx_1.Observable.timer(0, 150000);
         timer.subscribe(function () { return _this.getProposals(); });
     };
     ProposalListComponent.prototype.getProposals = function () {
@@ -32,6 +32,9 @@ var ProposalListComponent = (function () {
     ProposalListComponent.prototype.goTo = function (proposal) {
         var link = ['/proposal', proposal.id];
         this.router.navigate(link);
+    };
+    ProposalListComponent.prototype.removeProposal = function (proposal) {
+        this.proposalService.removeProposal(proposal.id);
     };
     ProposalListComponent = __decorate([
         core_1.Component({

@@ -24,9 +24,22 @@ export class ProposalService {
 
   createProposal(proposal: Proposal){
     let headers = new Headers({'Content-Type': 'application/json'})
-    let oprions = new RequestOptions({headers: headers})
+    let options = new RequestOptions({headers: headers})
     return this.http.post(this.proposalsUrl, JSON.stringify(proposal), {headers})
                     .map((resp: Response) => resp.json())
+  }
+
+  // removeProposal(id: number){
+  //   // let headers = new Headers({'Content-Type': 'application/json'})
+  //   return this.http.delete(this.proposalsUrl + '/' + id);
+  //
+  // }
+
+  // Delete a comment
+  removeProposal(id:string) {
+      return this.http.delete(`${this.proposalsUrl}/${id}`) // ...using put request
+                      //  .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
+                      //  .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
   private handleError (error: Response | any) {
     // In a real world app, we might use a remote logging infrastructure
