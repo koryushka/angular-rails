@@ -6,7 +6,7 @@ import { DocumentsComponent } from './documents/documents.component';
 import { ProposalListComponent } from './proposal/proposal-list.component';
 import { ProposalNewComponent } from './proposal/proposal-new.component';
 import { ProposalShowComponent } from './proposal/proposal-show.component';
-
+import { ProposalEditComponent } from './proposal/proposal-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -14,7 +14,8 @@ const routes: Routes = [
   { path: 'documents', component: DocumentsComponent },
   { path: 'proposals', component: ProposalListComponent },
   { path: 'proposals/new', component: ProposalNewComponent },
-  { path: 'proposal/:id', component: ProposalShowComponent }
+  { path: 'proposal/:id', component: ProposalShowComponent },
+  { path: 'proposal/:id/edit', component: ProposalEditComponent }
 
 
 

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Proposal } from './proposal';
 import { Observable } from 'rxjs/Rx';
-// import { Observable } from "rxjs/Observable";
 import { ProposalService } from './proposal.service';
 @Component({
   moduleId: module.id,

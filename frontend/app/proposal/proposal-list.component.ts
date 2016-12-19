@@ -43,6 +43,7 @@ export class ProposalListComponent implements OnInit {
 
   removeProposal(proposal: Proposal){
     this.proposalService.removeProposal(proposal.id)
+    this.proposals.splice(this.proposals.indexOf(proposal), 1);
 
   }
 }

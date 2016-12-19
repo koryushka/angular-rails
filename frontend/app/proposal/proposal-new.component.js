@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var proposal_1 = require('./proposal');
 var Rx_1 = require('rxjs/Rx');
-// import { Observable } from "rxjs/Observable";
 var proposal_service_1 = require('./proposal.service');
 var ProposalNewComponent = (function () {
     function ProposalNewComponent(proposalService) {

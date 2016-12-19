@@ -35,6 +35,7 @@ var ProposalListComponent = (function () {
     };
     ProposalListComponent.prototype.removeProposal = function (proposal) {
         this.proposalService.removeProposal(proposal.id);
+        this.proposals.splice(this.proposals.indexOf(proposal), 1);
     };
     ProposalListComponent = __decorate([
         core_1.Component({
