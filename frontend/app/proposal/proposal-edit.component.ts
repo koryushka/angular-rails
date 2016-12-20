@@ -36,10 +36,10 @@ export class ProposalEditComponent implements OnInit{
     proposalRequest.subscribe(response => this.proposal = response.json())
   }
 
-  save(): void {
-    this.proposalService.update(this.proposal)
-      .then(() => this.goBack());
-  }
+  // save(): void {
+  //   this.proposalService.update(this.proposal)
+  //     .then(() => this.goBack());
+  // }
 
   goToProposals(){
     let link = ['/proposals']

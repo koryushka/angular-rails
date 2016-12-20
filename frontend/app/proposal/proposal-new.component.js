@@ -8,10 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var proposal_1 = require('./proposal');
-var Rx_1 = require('rxjs/Rx');
-var proposal_service_1 = require('./proposal.service');
+var core_1 = require("@angular/core");
+var proposal_1 = require("./proposal");
+var Rx_1 = require("rxjs/Rx");
+var proposal_service_1 = require("./proposal.service");
 var ProposalNewComponent = (function () {
     function ProposalNewComponent(proposalService) {
         this.proposalService = proposalService;
@@ -26,16 +26,16 @@ var ProposalNewComponent = (function () {
             return Rx_1.Observable.throw(error);
         });
     };
-    ProposalNewComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'proposal-new',
-            templateUrl: 'proposal-new.component.html',
-            styleUrls: ['proposal-new.component.css']
-        }), 
-        __metadata('design:paramtypes', [proposal_service_1.ProposalService])
-    ], ProposalNewComponent);
     return ProposalNewComponent;
 }());
+ProposalNewComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'proposal-new',
+        templateUrl: 'proposal-new.component.html',
+        styleUrls: ['proposal-new.component.css']
+    }),
+    __metadata("design:paramtypes", [proposal_service_1.ProposalService])
+], ProposalNewComponent);
 exports.ProposalNewComponent = ProposalNewComponent;
 //# sourceMappingURL=proposal-new.component.js.map

@@ -28,20 +28,20 @@ export class ProposalService {
   }
 
   createProposal(proposal: Proposal){
-    // let headers = new Headers({'Content-Type': 'application/json'})
-    let options = new RequestOptions({headers: headers})
-    return this.http.post(this.proposalsUrl, JSON.stringify(proposal), {headers})
+    let headers = new Headers({'Content-Type': 'application/json'})
+    let options = new RequestOptions({headers: this.headers})
+    return this.http.post(this.proposalsUrl, JSON.stringify(proposal), {headers: headers})
                     .map((resp: Response) => resp.json())
   }
 
-  update(proposal: Proposal): Promise<Proposal> {
-    const url = `${this.heroesUrl}/${proposal.id}`;
-    return this.http
-      .put(url, JSON.stringify(proposal), {headers: this.headers})
-      .toPromise()
-      .then(() => hero)
-      .catch(this.handleError);
-  }
+  // update(proposal: Proposal): Promise<Proposal> {
+  //   const url = `${this.heroesUrl}/${proposal.id}`;
+  //   return this.http
+  //     .put(url, JSON.stringify(proposal), {headers: this.headers})
+  //     .toPromise()
+  //     .then(() => hero)
+  //     .catch(this.handleError);
+  // }
 
   // removeProposal(id: number){
   //   // let headers = new Headers({'Content-Type': 'application/json'})

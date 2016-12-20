@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var Rx_1 = require('rxjs/Rx');
-var document_service_1 = require('./document.service');
+var core_1 = require("@angular/core");
+var Rx_1 = require("rxjs/Rx");
+var document_service_1 = require("./document.service");
 var DocumentsComponent = (function () {
     function DocumentsComponent(documentService) {
         this.documentService = documentService;
@@ -27,17 +27,17 @@ var DocumentsComponent = (function () {
         this.documentService.getDocuments()
             .subscribe(function (documents) { return _this.documents = documents; }, function (error) { return _this.errorMessage = error; });
     };
-    DocumentsComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'documets',
-            templateUrl: 'documents.component.html',
-            styleUrls: ['documents.component.css'],
-            providers: [document_service_1.DocumentService]
-        }), 
-        __metadata('design:paramtypes', [document_service_1.DocumentService])
-    ], DocumentsComponent);
     return DocumentsComponent;
 }());
+DocumentsComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'documets',
+        templateUrl: 'documents.component.html',
+        styleUrls: ['documents.component.css'],
+        providers: [document_service_1.DocumentService]
+    }),
+    __metadata("design:paramtypes", [document_service_1.DocumentService])
+], DocumentsComponent);
 exports.DocumentsComponent = DocumentsComponent;
 //# sourceMappingURL=documents.component.js.map

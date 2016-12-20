@@ -8,12 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-var Rx_1 = require('rxjs/Rx');
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+var Rx_1 = require("rxjs/Rx");
 // Import RxJs required methods
-require('rxjs/add/operator/map');
-require('rxjs/add/operator/catch');
+require("rxjs/add/operator/map");
+require("rxjs/add/operator/catch");
 var ProposalService = (function () {
     function ProposalService(http) {
         this.http = http;
@@ -29,19 +29,19 @@ var ProposalService = (function () {
         return this.http.get(url);
     };
     ProposalService.prototype.createProposal = function (proposal) {
-        // let headers = new Headers({'Content-Type': 'application/json'})
-        var options = new http_1.RequestOptions({ headers: headers });
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: this.headers });
         return this.http.post(this.proposalsUrl, JSON.stringify(proposal), { headers: headers })
             .map(function (resp) { return resp.json(); });
     };
-    ProposalService.prototype.update = function (proposal) {
-        var url = this.heroesUrl + "/" + proposal.id;
-        return this.http
-            .put(url, JSON.stringify(proposal), { headers: this.headers })
-            .toPromise()
-            .then(function () { return hero; })
-            .catch(this.handleError);
-    };
+    // update(proposal: Proposal): Promise<Proposal> {
+    //   const url = `${this.heroesUrl}/${proposal.id}`;
+    //   return this.http
+    //     .put(url, JSON.stringify(proposal), {headers: this.headers})
+    //     .toPromise()
+    //     .then(() => hero)
+    //     .catch(this.handleError);
+    // }
     // removeProposal(id: number){
     //   // let headers = new Headers({'Content-Type': 'application/json'})
     //   return this.http.delete(this.proposalsUrl + '/' + id);
@@ -77,11 +77,11 @@ var ProposalService = (function () {
         console.error(errMsg);
         return Rx_1.Observable.throw(errMsg);
     };
-    ProposalService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], ProposalService);
     return ProposalService;
 }());
+ProposalService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], ProposalService);
 exports.ProposalService = ProposalService;
 //# sourceMappingURL=proposal.service.js.map
