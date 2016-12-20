@@ -23,7 +23,8 @@ var routes = [
     { path: 'proposals', component: proposal_list_component_1.ProposalListComponent },
     { path: 'proposals/new', component: proposal_new_component_1.ProposalNewComponent },
     { path: 'proposal/:id', component: proposal_show_component_1.ProposalShowComponent },
-    { path: 'proposal/:id/edit', component: proposal_edit_component_1.ProposalEditComponent }
+    { path: 'proposal/:id/edit', component: proposal_edit_component_1.ProposalEditComponent },
+    { path: 'edit', component: proposal_edit_component_1.ProposalEditComponent }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

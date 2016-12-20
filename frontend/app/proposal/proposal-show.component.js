@@ -33,6 +33,10 @@ var ProposalShowComponent = (function () {
         var link = ['/proposals'];
         return this.router.navigate(link);
     };
+    ProposalShowComponent.prototype.goToEdit = function (proposal) {
+        var link = ["proposal/" + proposal.id + "/edit"];
+        return this.router.navigate(link);
+    };
     return ProposalShowComponent;
 }());
 __decorate([

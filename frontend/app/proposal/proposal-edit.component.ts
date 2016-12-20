@@ -14,7 +14,7 @@ import { ProposalService } from './proposal.service';
   providers: [ ProposalService ]
 })
 
-export class ProposalEditComponent implements OnInit{
+export class ProposalEditComponent{
   constructor(
     private router: Router,
     private http: Http,
@@ -29,20 +29,22 @@ export class ProposalEditComponent implements OnInit{
   @Input()
   proposal: Proposal;
 
-  ngOnInit(): void{
-    let proposalRequest = this.route.params
-        .flatMap((params: Params) =>
-          this.proposalService.getProposal(+params['id']));
-    proposalRequest.subscribe(response => this.proposal = response.json())
-  }
+  // ngOnInit(): void{
+  //   let proposalRequest = this.route.params
+  //       .flatMap((params: Params) =>
+  //         this.proposalService.getProposal(+params['id']));
+  //   // console.debug(`REQUEST: ${proposalRequest}`)
+  //
+  //   let result = proposalRequest.subscribe(response => this.proposal = response.json())
+  // }
 
   // save(): void {
   //   this.proposalService.update(this.proposal)
   //     .then(() => this.goBack());
   // }
 
-  goToProposals(){
-    let link = ['/proposals']
-    return this.router.navigate(link)
-  }
+  // goToProposals(){
+  //   let link = ['/proposals']
+  //   return this.router.navigate(link)
+  // }
 }

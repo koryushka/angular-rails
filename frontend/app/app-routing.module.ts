@@ -15,7 +15,9 @@ const routes: Routes = [
   { path: 'proposals', component: ProposalListComponent },
   { path: 'proposals/new', component: ProposalNewComponent },
   { path: 'proposal/:id', component: ProposalShowComponent },
-  { path: 'proposal/:id/edit', component: ProposalEditComponent }
+  { path: 'proposal/:id/edit', component: ProposalEditComponent },
+  { path: 'edit', component: ProposalEditComponent }
+
 
 
 

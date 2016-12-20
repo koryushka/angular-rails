@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 var Rx_1 = require("rxjs/Rx");
-// Import RxJs required methods
 require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
 var ProposalService = (function () {
@@ -34,37 +33,20 @@ var ProposalService = (function () {
         return this.http.post(this.proposalsUrl, JSON.stringify(proposal), { headers: headers })
             .map(function (resp) { return resp.json(); });
     };
-    // update(proposal: Proposal): Promise<Proposal> {
-    //   const url = `${this.heroesUrl}/${proposal.id}`;
-    //   return this.http
-    //     .put(url, JSON.stringify(proposal), {headers: this.headers})
-    //     .toPromise()
-    //     .then(() => hero)
-    //     .catch(this.handleError);
-    // }
-    // removeProposal(id: number){
-    //   // let headers = new Headers({'Content-Type': 'application/json'})
-    //   return this.http.delete(this.proposalsUrl + '/' + id);
-    //
-    // }
-    // Delete a comment
-    // removeProposal(id:number) {
-    //   console.log(id)
-    //     return this.http.delete(this.proposalsUrl +'/'+ id ) // ...using put request
-    //                      .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
-    //                      .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
-    // }
+    ProposalService.prototype.update = function (proposal) {
+        var url = this.proposalsUrl + "/" + proposal.id;
+        return this.http
+            .put(url, JSON.stringify(proposal), { headers: this.headers })
+            .map(function () { return proposal; });
+    };
     ProposalService.prototype.removeProposal = function (id) {
         var url = this.proposalsUrl + "/" + id;
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         console.log(id);
         return this.http.delete(url, { headers: headers })
-            .toPromise()
-            .then(function () { return null; })
-            .catch(this.handleError);
+            .map(function () { return null; });
     };
     ProposalService.prototype.handleError = function (error) {
-        // In a real world app, we might use a remote logging infrastructure
         var errMsg;
         if (error instanceof http_1.Response) {
             var body = error.json() || '';

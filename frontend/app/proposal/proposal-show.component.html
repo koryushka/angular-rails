@@ -4,8 +4,10 @@
     <button routerLink='/proposals' type="button" class="close" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
+    <button (click)="goToEdit(proposal);" type="button" class="btn btn-primary" aria-label="Right Align">
+      <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+    </button>
     <h1>{{ proposal.customer }}</h1>
-
     <div>
 
         <p>Hi {{ proposal.customer }},</p>

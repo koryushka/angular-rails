@@ -21,22 +21,6 @@ var ProposalEditComponent = (function () {
         this.proposalService = proposalService;
     }
     ;
-    ProposalEditComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        var proposalRequest = this.route.params
-            .flatMap(function (params) {
-            return _this.proposalService.getProposal(+params['id']);
-        });
-        proposalRequest.subscribe(function (response) { return _this.proposal = response.json(); });
-    };
-    // save(): void {
-    //   this.proposalService.update(this.proposal)
-    //     .then(() => this.goBack());
-    // }
-    ProposalEditComponent.prototype.goToProposals = function () {
-        var link = ['/proposals'];
-        return this.router.navigate(link);
-    };
     return ProposalEditComponent;
 }());
 __decorate([

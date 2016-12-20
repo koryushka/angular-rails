@@ -11,7 +11,7 @@ import 'rxjs/add/operator/catch';
 export class ProposalService {
   private proposalsUrl = 'http://localhost:3003/proposals';
   private headers = new Headers({'Content-Type': 'application/json'});
-
+  // proposal: any;
 
   constructor(
     private http: Http
@@ -24,7 +24,9 @@ export class ProposalService {
 
   getProposal(id: number){
     const url = `${this.proposalsUrl}/${id}`;
-    return this.http.get(url);
+
+    return this.http.get(url)
+    // .map((resp: Response) => this.proposal = resp.json())
   }
 
   createProposal(proposal: Proposal){
@@ -34,38 +36,37 @@ export class ProposalService {
                     .map((resp: Response) => resp.json())
   }
 
-  // update(proposal: Proposal): Promise<Proposal> {
-  //   const url = `${this.heroesUrl}/${proposal.id}`;
-  //   return this.http
-  //     .put(url, JSON.stringify(proposal), {headers: this.headers})
+  update(proposal: Proposal): Observable<Proposal> {
+    const url = `${this.proposalsUrl}/${proposal.id}`;
+    return this.http
+      .put(url, JSON.stringify(proposal), {headers: this.headers})
+      .map(()  => proposal)
+      // .toPromise()
+      // .then(() => proposal)
+      // .catch(this.handleError);
+  }
+
+  // removeProposal(id: number): Promise<void> {
+  //   const url = `${this.proposalsUrl}/${id}`;
+  //   let headers = new Headers({'Content-Type': 'application/json'})
+  //   console.log(id)
+  //   return this.http.delete(url, {headers: headers})
   //     .toPromise()
-  //     .then(() => hero)
+  //     .then(() => null)
   //     .catch(this.handleError);
   // }
 
-  // removeProposal(id: number){
-  //   // let headers = new Headers({'Content-Type': 'application/json'})
-  //   return this.http.delete(this.proposalsUrl + '/' + id);
-  //
-  // }
-
-  // Delete a comment
-  // removeProposal(id:number) {
-  //   console.log(id)
-  //     return this.http.delete(this.proposalsUrl +'/'+ id ) // ...using put request
-  //                      .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
-  //                      .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
-  // }
-
-  removeProposal(id: number): Promise<void> {
+  removeProposal(id: number): Observable<void> {
     const url = `${this.proposalsUrl}/${id}`;
     let headers = new Headers({'Content-Type': 'application/json'})
     console.log(id)
     return this.http.delete(url, {headers: headers})
-      .toPromise()
-      .then(() => null)
-      .catch(this.handleError);
+                    .map(()  => null)
+      // .toPromise()
+      // .then(() => null)
+      // .catch(this.handleError);
   }
+
   private handleError (error: Response | any) {
     // In a real world app, we might use a remote logging infrastructure
     let errMsg: string;

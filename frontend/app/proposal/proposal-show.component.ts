@@ -40,4 +40,9 @@ export class ProposalShowComponent implements OnInit{
     let link = ['/proposals']
     return this.router.navigate(link)
   }
+
+  goToEdit(proposal: Proposal) {
+    let link = [`proposal/${proposal.id}/edit`]
+    return this.router.navigate(link)
+  }
 }
