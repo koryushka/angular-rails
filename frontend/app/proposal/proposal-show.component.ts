@@ -23,17 +23,20 @@ export class ProposalShowComponent implements OnInit{
   ){};
 
   proposals: Proposal[];
+  proposalEditor: boolean = false;
+  submitted: boolean = false;
+
   errorMessage: string;
 
 
-  @Input()
-  proposal: Proposal;
+
 
   ngOnInit(): void{
     let proposalRequest = this.route.params
         .flatMap((params: Params) =>
           this.proposalService.getProposal(+params['id']));
     proposalRequest.subscribe(response => this.proposal = response.json())
+
   }
 
   goToProposals(){
@@ -42,7 +45,27 @@ export class ProposalShowComponent implements OnInit{
   }
 
   goToEdit(proposal: Proposal) {
-    let link = [`proposal/${proposal.id}/edit`]
-    return this.router.navigate(link)
+    // let link = [`proposal/${proposal.id}/edit`]
+    // console.debug("PROP " + proposal.customer)
+    // this.proposalService.writeProposal(proposal);
+    // return this.router.navigate(link)
+    this.proposalEditor = true
   }
+
+  updateProposal(proposal: Proposal){
+    this.submitted = true
+    return this.proposalService.updateProposal(proposal)
+               .subscribe(
+                 data => {return true},
+                 error => {
+                   console.log('Smth went wrong');
+                   return Observable.throw(error);
+                 }
+               );
+
+  }
+
+  @Input() proposal: Proposal;
+  test: string = 'This is test string';
+
 }

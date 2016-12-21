@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var http_1 = require("@angular/http");
+var Rx_1 = require("rxjs/Rx");
 var proposal_1 = require("./proposal");
 var proposal_service_1 = require("./proposal.service");
 var ProposalShowComponent = (function () {
@@ -19,6 +20,9 @@ var ProposalShowComponent = (function () {
         this.http = http;
         this.route = route;
         this.proposalService = proposalService;
+        this.proposalEditor = false;
+        this.submitted = false;
+        this.test = 'This is test string';
     }
     ;
     ProposalShowComponent.prototype.ngOnInit = function () {
@@ -34,8 +38,15 @@ var ProposalShowComponent = (function () {
         return this.router.navigate(link);
     };
     ProposalShowComponent.prototype.goToEdit = function (proposal) {
-        var link = ["proposal/" + proposal.id + "/edit"];
-        return this.router.navigate(link);
+        this.proposalEditor = true;
+    };
+    ProposalShowComponent.prototype.updateProposal = function (proposal) {
+        this.submitted = true;
+        return this.proposalService.updateProposal(proposal)
+            .subscribe(function (data) { return true; }, function (error) {
+            console.log('Smth went wrong');
+            return Rx_1.Observable.throw(error);
+        });
     };
     return ProposalShowComponent;
 }());

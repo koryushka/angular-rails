@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
-
-import { Proposal } from './proposal';
 import { ProposalService } from './proposal.service';
+import { Proposal } from './proposal';
+
+
+// import { Proposal } from './proposal';
 
 @Component({
   moduleId: module.id,
@@ -15,36 +16,13 @@ import { ProposalService } from './proposal.service';
 })
 
 export class ProposalEditComponent{
+  // @Input() proposal: Proposal;
   constructor(
-    private router: Router,
-    private http: Http,
-    private route: ActivatedRoute,
     private proposalService: ProposalService
   ){};
 
-  proposals: Proposal[];
-  errorMessage: string;
+  // proposal: Proposal = new Proposal( 1, 'ABC Company', 'http://portfolio.com', 'Ruby on Rails', 150, 120, 15, 'my_email@google.com');
+  proposal = JSON.stringify(this.proposalService);
 
-
-  @Input()
-  proposal: Proposal;
-
-  // ngOnInit(): void{
-  //   let proposalRequest = this.route.params
-  //       .flatMap((params: Params) =>
-  //         this.proposalService.getProposal(+params['id']));
-  //   // console.debug(`REQUEST: ${proposalRequest}`)
-  //
-  //   let result = proposalRequest.subscribe(response => this.proposal = response.json())
-  // }
-
-  // save(): void {
-  //   this.proposalService.update(this.proposal)
-  //     .then(() => this.goBack());
-  // }
-
-  // goToProposals(){
-  //   let link = ['/proposals']
-  //   return this.router.navigate(link)
-  // }
+  // proposal = 'Test'
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { Proposal } from './proposal'
 
@@ -11,7 +12,8 @@ import 'rxjs/add/operator/catch';
 export class ProposalService {
   private proposalsUrl = 'http://localhost:3003/proposals';
   private headers = new Headers({'Content-Type': 'application/json'});
-  // proposal: any;
+  proposal: Proposal;
+  test: string;
 
   constructor(
     private http: Http
@@ -24,11 +26,20 @@ export class ProposalService {
 
   getProposal(id: number){
     const url = `${this.proposalsUrl}/${id}`;
-
-    return this.http.get(url)
+    return this.http.get(url);
     // .map((resp: Response) => this.proposal = resp.json())
   }
+  //
+  // fetchProposal(proposalRequest: Response) {
+  //   proposalRequest.subscribe(response => this.proposal = response.json())
+  //
+  // }
 
+  writeProposal(prop: Proposal){
+    this.proposal = prop
+    console.debug('PROP '+ this.proposal.customer)
+
+  }
   createProposal(proposal: Proposal){
     let headers = new Headers({'Content-Type': 'application/json'})
     let options = new RequestOptions({headers: this.headers})
@@ -36,7 +47,7 @@ export class ProposalService {
                     .map((resp: Response) => resp.json())
   }
 
-  update(proposal: Proposal): Observable<Proposal> {
+  updateProposal(proposal: Proposal): Observable<Proposal> {
     const url = `${this.proposalsUrl}/${proposal.id}`;
     return this.http
       .put(url, JSON.stringify(proposal), {headers: this.headers})

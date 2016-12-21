@@ -9,24 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var http_1 = require("@angular/http");
-var proposal_1 = require("./proposal");
 var proposal_service_1 = require("./proposal.service");
+// import { Proposal } from './proposal';
 var ProposalEditComponent = (function () {
-    function ProposalEditComponent(router, http, route, proposalService) {
-        this.router = router;
-        this.http = http;
-        this.route = route;
+    // @Input() proposal: Proposal;
+    function ProposalEditComponent(proposalService) {
         this.proposalService = proposalService;
+        // proposal: Proposal = new Proposal( 1, 'ABC Company', 'http://portfolio.com', 'Ruby on Rails', 150, 120, 15, 'my_email@google.com');
+        this.proposal = JSON.stringify(this.proposalService);
     }
     ;
     return ProposalEditComponent;
 }());
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", proposal_1.Proposal)
-], ProposalEditComponent.prototype, "proposal", void 0);
 ProposalEditComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
@@ -35,10 +29,7 @@ ProposalEditComponent = __decorate([
         styleUrls: ['proposal-edit.component.css'],
         providers: [proposal_service_1.ProposalService]
     }),
-    __metadata("design:paramtypes", [router_1.Router,
-        http_1.Http,
-        router_1.ActivatedRoute,
-        proposal_service_1.ProposalService])
+    __metadata("design:paramtypes", [proposal_service_1.ProposalService])
 ], ProposalEditComponent);
 exports.ProposalEditComponent = ProposalEditComponent;
 //# sourceMappingURL=proposal-edit.component.js.map
