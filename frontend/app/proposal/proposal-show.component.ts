@@ -14,7 +14,7 @@ import { ProposalService } from './proposal.service';
   providers: [ ProposalService ]
 })
 
-export class ProposalShowComponent implements OnInit{
+export class ProposalShowComponent implements OnInit {
   constructor(
     private router: Router,
     private http: Http,
@@ -28,28 +28,30 @@ export class ProposalShowComponent implements OnInit{
 
   errorMessage: string;
 
-
-
-
   ngOnInit(): void{
+    console.debug("INIT")
     let proposalRequest = this.route.params
         .flatMap((params: Params) =>
           this.proposalService.getProposal(+params['id']));
-    proposalRequest.subscribe(response => this.proposal = response.json())
+    proposalRequest.subscribe(response => {
+      this.proposal = response.json();
+      // this.proposalService.setProposalDetails(this.proposal, false);
+      this.proposalService.setProposal(this.proposal);
 
+    });
   }
 
   goToProposals(){
-    let link = ['/proposals']
-    return this.router.navigate(link)
+    let link = ['/proposals'];
+    return this.router.navigate(link);
   }
 
   goToEdit(proposal: Proposal) {
-    // let link = [`proposal/${proposal.id}/edit`]
-    // console.debug("PROP " + proposal.customer)
+    let link = [`proposals/${proposal.id}/edit`];
     // this.proposalService.writeProposal(proposal);
-    // return this.router.navigate(link)
-    this.proposalEditor = true
+    // this.proposalService.proposalEditor = true;
+    // this.proposalEditor = true;
+    return this.router.navigate(link);
   }
 
   updateProposal(proposal: Proposal){
@@ -66,6 +68,4 @@ export class ProposalShowComponent implements OnInit{
   }
 
   @Input() proposal: Proposal;
-  test: string = 'This is test string';
-
 }

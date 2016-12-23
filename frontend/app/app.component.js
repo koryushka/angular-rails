@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var proposal_service_1 = require("./proposal/proposal.service");
 var AppComponent = (function () {
     function AppComponent() {
     }
@@ -19,7 +20,8 @@ AppComponent = __decorate([
         moduleId: module.id,
         selector: 'app',
         templateUrl: 'app.component.html',
-        styleUrls: ['app.component.css']
+        styleUrls: ['app.component.css'],
+        providers: [proposal_service_1.ProposalService]
     }),
     __metadata("design:paramtypes", [])
 ], AppComponent);

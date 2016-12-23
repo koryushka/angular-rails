@@ -30,7 +30,7 @@ var ProposalListComponent = (function () {
             .subscribe(function (proposals) { return _this.proposals = proposals; }, function (error) { return _this.errorMessage = error; });
     };
     ProposalListComponent.prototype.goTo = function (proposal) {
-        var link = ['/proposal', proposal.id];
+        var link = ['/proposals', proposal.id];
         this.router.navigate(link);
     };
     ProposalListComponent.prototype.removeProposal = function (proposal) {

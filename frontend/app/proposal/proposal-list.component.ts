@@ -37,7 +37,7 @@ export class ProposalListComponent implements OnInit {
   }
 
   goTo(proposal: Proposal): void{
-    let link = ['/proposal', proposal.id]
+    let link = ['/proposals', proposal.id]
     this.router.navigate(link)
   }
 

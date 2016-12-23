@@ -22,23 +22,27 @@ var ProposalShowComponent = (function () {
         this.proposalService = proposalService;
         this.proposalEditor = false;
         this.submitted = false;
-        this.test = 'This is test string';
     }
     ;
     ProposalShowComponent.prototype.ngOnInit = function () {
         var _this = this;
+        console.debug("INIT");
         var proposalRequest = this.route.params
             .flatMap(function (params) {
             return _this.proposalService.getProposal(+params['id']);
         });
-        proposalRequest.subscribe(function (response) { return _this.proposal = response.json(); });
+        proposalRequest.subscribe(function (response) {
+            _this.proposal = response.json();
+            _this.proposalService.setProposal(_this.proposal);
+        });
     };
     ProposalShowComponent.prototype.goToProposals = function () {
         var link = ['/proposals'];
         return this.router.navigate(link);
     };
     ProposalShowComponent.prototype.goToEdit = function (proposal) {
-        this.proposalEditor = true;
+        var link = ["proposals/" + proposal.id + "/edit"];
+        return this.router.navigate(link);
     };
     ProposalShowComponent.prototype.updateProposal = function (proposal) {
         this.submitted = true;

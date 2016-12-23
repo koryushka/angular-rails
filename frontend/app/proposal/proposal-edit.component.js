@@ -9,16 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var Rx_1 = require("rxjs/Rx");
 var proposal_service_1 = require("./proposal.service");
-// import { Proposal } from './proposal';
 var ProposalEditComponent = (function () {
-    // @Input() proposal: Proposal;
     function ProposalEditComponent(proposalService) {
         this.proposalService = proposalService;
-        // proposal: Proposal = new Proposal( 1, 'ABC Company', 'http://portfolio.com', 'Ruby on Rails', 150, 120, 15, 'my_email@google.com');
-        this.proposal = JSON.stringify(this.proposalService);
     }
-    ;
+    ProposalEditComponent.prototype.ngOnInit = function () {
+        console.debug("Edit: ", this.proposalService.proposal);
+        this.proposal = this.proposalService.proposal;
+    };
+    ProposalEditComponent.prototype.goBack = function () {
+        window.history.back();
+    };
+    ProposalEditComponent.prototype.updateProposal = function (proposal) {
+        this.submitted = true;
+        return this.proposalService.updateProposal(proposal)
+            .subscribe(function (data) { return true; }, function (error) {
+            console.log('Smth went wrong');
+            return Rx_1.Observable.throw(error);
+        });
+    };
     return ProposalEditComponent;
 }());
 ProposalEditComponent = __decorate([
@@ -26,8 +37,7 @@ ProposalEditComponent = __decorate([
         moduleId: module.id,
         selector: 'proposal-edit',
         templateUrl: 'proposal-edit.component.html',
-        styleUrls: ['proposal-edit.component.css'],
-        providers: [proposal_service_1.ProposalService]
+        styleUrls: ['proposal-edit.component.css']
     }),
     __metadata("design:paramtypes", [proposal_service_1.ProposalService])
 ], ProposalEditComponent);

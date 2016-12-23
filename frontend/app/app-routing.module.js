@@ -16,16 +16,43 @@ var proposal_list_component_1 = require("./proposal/proposal-list.component");
 var proposal_new_component_1 = require("./proposal/proposal-new.component");
 var proposal_show_component_1 = require("./proposal/proposal-show.component");
 var proposal_edit_component_1 = require("./proposal/proposal-edit.component");
+var indexRoute = { path: '', redirectTo: '/home', pathMatch: 'full' };
+var fallbackRoute = { path: '**', component: homepage_component_1.HomepageComponent };
 var routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: homepage_component_1.HomepageComponent },
     { path: 'documents', component: documents_component_1.DocumentsComponent },
-    { path: 'proposals', component: proposal_list_component_1.ProposalListComponent },
-    { path: 'proposals/new', component: proposal_new_component_1.ProposalNewComponent },
-    { path: 'proposal/:id', component: proposal_show_component_1.ProposalShowComponent },
-    { path: 'proposal/:id/edit', component: proposal_edit_component_1.ProposalEditComponent },
-    { path: 'edit', component: proposal_edit_component_1.ProposalEditComponent }
+    { path: 'proposals',
+        children: [
+            { path: '', component: proposal_list_component_1.ProposalListComponent },
+            { path: 'new', component: proposal_new_component_1.ProposalNewComponent },
+            { path: ':id',
+                children: [
+                    { path: '', component: proposal_show_component_1.ProposalShowComponent },
+                    { path: 'edit', component: proposal_edit_component_1.ProposalEditComponent }
+                ]
+            }
+        ]
+    },
+    {
+        path: 'proposal-list',
+        component: proposal_list_component_1.ProposalListComponent,
+        outlet: 'proposal-list'
+    },
+    {
+        path: '**',
+        redirectTo: '/home',
+        pathMatch: 'full'
+    },
+    indexRoute,
+    fallbackRoute
 ];
+//
+// { path: 'product-details/:id', component: ProductDetails,
+//   children: [
+//     { path: '', redirectTo: 'overview', pathMatch: 'full' },
+//     { path: 'overview', component: Overview },
+//     { path: 'specs', component: Specs }
+//   ]
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
     }
