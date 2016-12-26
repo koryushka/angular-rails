@@ -11,15 +11,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var Rx_1 = require("rxjs/Rx");
 var proposal_service_1 = require("./proposal.service");
+// import { Proposal } from './proposal';
 var ProposalEditComponent = (function () {
     function ProposalEditComponent(proposalService) {
         this.proposalService = proposalService;
     }
     ProposalEditComponent.prototype.ngOnInit = function () {
+        // this.proposalEditor = true;
+        // this.proposalEditor =   this.proposalService.proposalEditor
+        // proposalService.setProposalDetails(this.proposal, true)
         console.debug("Edit: ", this.proposalService.proposal);
         this.proposal = this.proposalService.proposal;
     };
     ProposalEditComponent.prototype.goBack = function () {
+        // this.proposalEditor =   false
         window.history.back();
     };
     ProposalEditComponent.prototype.updateProposal = function (proposal) {

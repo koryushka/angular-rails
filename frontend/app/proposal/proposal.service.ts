@@ -19,6 +19,8 @@ export class ProposalService {
   setProposal(proposal: Proposal){
     this.proposal = proposal;
     // this.proposalEditor = proposalEditor;
+    console.debug("Service: ", this.proposal)
+
   }
 
 

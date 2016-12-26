@@ -20,6 +20,7 @@ var ProposalService = (function () {
     ProposalService.prototype.setProposal = function (proposal) {
         this.proposal = proposal;
         // this.proposalEditor = proposalEditor;
+        console.debug("Service: ", this.proposal);
     };
     ProposalService.prototype.getProposals = function () {
         return this.http.get(this.proposalsUrl)

@@ -33,6 +33,7 @@ var ProposalShowComponent = (function () {
         });
         proposalRequest.subscribe(function (response) {
             _this.proposal = response.json();
+            // this.proposalService.setProposalDetails(this.proposal, false);
             _this.proposalService.setProposal(_this.proposal);
         });
     };
@@ -42,6 +43,9 @@ var ProposalShowComponent = (function () {
     };
     ProposalShowComponent.prototype.goToEdit = function (proposal) {
         var link = ["proposals/" + proposal.id + "/edit"];
+        // this.proposalService.writeProposal(proposal);
+        // this.proposalService.proposalEditor = true;
+        // this.proposalEditor = true;
         return this.router.navigate(link);
     };
     ProposalShowComponent.prototype.updateProposal = function (proposal) {
